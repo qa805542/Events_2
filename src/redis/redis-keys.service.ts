@@ -4,7 +4,7 @@ import Redis from 'ioredis';
 
 @Injectable()
 export class RedisKeysService {
-  constructor(@Inject('REDIS_CLIENT') private readonly redisClient: Redis) {}
+  constructor(@Inject('REDIS_WRITE_CLIENT') private readonly redisClient: Redis) {}
 
   async setKey(key: string, value: any) {
     await this.redisClient.set(key, JSON.stringify(value));

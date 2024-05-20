@@ -4,7 +4,7 @@ import Redis from 'ioredis';
 
 @Injectable()
 export class PubSubService {
-  constructor(@Inject('REDIS_CLIENT') private readonly redisClient: Redis) {}
+  constructor(@Inject('REDIS_SUBSCRIBE_CLIENT') private readonly redisClient: Redis) {}
 
   async publish(channel: string, message: any) {
     await this.redisClient.publish(channel, JSON.stringify(message));
